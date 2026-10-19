@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Money - Keuangan Pribadi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div>
+            <h1>Smart Money</h1>
+            <p>Kelola uangmu dengan cerdas.</p>
+        </div>
+        
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2>Ringkasan Keuangan</h2>
+
+            <div class="cards">
+                <div class="card total">
+                    <p>Total Uang</p>
+                    <h3 id="totalSaldo">Rp0</h3>
+                    <small>Cash + rekening/e-wallet</small>
+                </div>
+
+                <div class="card">
+                    <p>Uang Tunai (Cash)</p>
+                    <h3 id="saldoCash">Rp0</h3>
+                </div>
+
+                <div class="card">
+                    <p>Saldo Rekening / E-wallet</p>
+                    <h3 id="saldoBank">Rp0</h3>
+                </div>
+
+                <div class="card income">
+                    <p>Uang Masuk</p>
+                    <h3 id="totalMasuk">Rp0</h3>
+                </div>
+
+                <div class="card expense">
+                    <p>Uang Keluar</p>
+                    <h3 id="totalKeluar">Rp0</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Atur Saldo Awal</h2>
+            <p class="description">
+                Masukkan jumlah uang yang kamu miliki sebelum mulai mencatat transaksi.
+            </p>
+
+            <form id="formSaldo">
+                <div class="form-grid">
+                    <div>
+                        <label for="saldoAwalCash">Uang tunai (Rp)</label>
+                        <input type="number" id="saldoAwalCash"
+                               min="0" step="1" required>
+                    </div>
+
+                    <div>
+                        <label for="saldoAwalBank">Rekening / E-wallet (Rp)</label>
+                        <input type="number" id="saldoAwalBank"
+                               min="0" step="1" required>
+                    </div>
+                </div>
+
+                <button type="submit">Simpan Saldo Awal</button>
+            </form>
+            <p class="note">
+                Saldo awal bukan transaksi pemasukan. Isi saldo awal satu kali
+                sesuai kondisi uangmu saat mulai menggunakan aplikasi.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Catat Transaksi</h2>
+
+            <form id="formTransaksi">
+                <div class="form-grid">
+                    <div>
+                        <label for="jenis">Jenis transaksi</label>
+                        <select id="jenis" required>
+                            <option value="masuk">Uang masuk</option>
+                            <option value="keluar">Uang keluar</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="akun">Sumber / tempat uang</label>
+                        <select id="akun" required>
+                            <option value="cash">Cash / Tunai</option>
+                            <option value="bank">Rekening / E-wallet</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="kategori">Kategori</label>
+                        <select id="kategori" required>
+                            <option value="Uang saku">Uang saku</option>
+                            <option value="Gaji">Gaji</option>
+                            <option value="Usaha">Hasil usaha</option>
+                            <option value="Makan">Makan dan minum</option>
+                            <option value="Transportasi">Transportasi</option>
+                            <option value="Kuliah">Kuliah</option>
+                            <option value="Belanja">Belanja</option>
+                            <option value="Tagihan">Tagihan</option>
+                            <option value="Hiburan">Hiburan</option>
+                            <option value="Kesehatan">Kesehatan</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="jumlah">Jumlah (Rp)</label>
+                        <input type="number" id="jumlah" min="1"
+                               step="1" placeholder="Contoh: 25000" required>
+                    </div>
+
+                    <div>
+                        <label for="tanggal">Tanggal transaksi</label>
+                        <input type="date" id="tanggal" required>
+                    </div>
+
+                    <div>
+                        <label for="keterangan">Keterangan</label>
+                        <input type="text" id="keterangan"
+                               placeholder="Contoh: Makan siang">
+                    </div>
+                </div>
+
+                <button type="submit">+ Simpan Transaksi</button>
+            </form>
+            <p id="pesan" class="message" role="status"></p>
+        </section>
+
+        <section class="section">
+            <h2>Rekapan Keuangan</h2>
+
+            <div class="filter">
+                <div>
+                    <label for="periode">Periode rekap</label>
+                    <select id="periode">
+                        <option value="minggu">Mingguan</option>
+                        <option value="bulan" selected>Bulanan</option>
+                        <option value="tahun">Tahunan</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="tanggalRekap">Pilih tanggal acuan</label>
+                    <input type="date" id="tanggalRekap" required>
+                </div>
+            </div>
+
+            <div class="summary">
+                <div>
+                    <span>Periode</span>
+                    <strong id="labelPeriode">-</strong>
+                </div>
+                <div>
+                    <span>Total pemasukan</span>
+                    <strong class="green" id="rekapMasuk">Rp0</strong>
+                </div>
+                <div>
+                    <span>Total pengeluaran</span>
+                    <strong class="red" id="rekapKeluar">Rp0</strong>
+                </div>
+                <div>
+                    <span>Selisih periode</span>
+                    <strong id="rekapSelisih">Rp0</strong>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="history-header">
+                <div>
+                    <h2>Riwayat Transaksi</h2>
+                    <p class="description">Transaksi terbaru ditampilkan lebih dahulu.</p>
+                </div>
+                <button type="button" id="hapusSemua" class="danger">
+                    Hapus Semua
+                </button>
+            </div>
+
+            <div class="filter">
+                <div>
+                    <label for="filterJenis">Jenis transaksi</label>
+                    <select id="filterJenis">
+                        <option value="semua">Semua transaksi</option>
+                        <option value="masuk">Uang masuk</option>
+                        <option value="keluar">Uang keluar</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="cari">Cari transaksi</label>
+                    <input type="search" id="cari"
+                           placeholder="Cari kategori atau keterangan">
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Transaksi</th>
+                            <th>Akun</th>
+                            <th>Jumlah</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="daftarTransaksi"></tbody>
+                </table>
+            </div>
+
+            <p id="kosong" class="empty">Belum ada transaksi.</p>
+        </section>
+
+        <footer>
+            <p>Smart Money &copy; 2026 | Keuangan lebih teratur.</p>
+            <small>Data tersimpan di browser perangkat ini.</small>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

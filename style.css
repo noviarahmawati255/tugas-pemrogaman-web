@@ -1,0 +1,258 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff5f7;
+    color: #55404a;
+}
+
+.header {
+    background: #e9a6b7;
+    color: white;
+    padding: 25px max(20px, calc((100% - 1100px) / 2));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.header h1 {
+    margin: 0 0 8px;
+}
+
+.header p {
+    margin: 0;
+}
+
+.logo {
+    background: white;
+    color: #c66b88;
+    padding: 17px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 25px auto;
+    padding: 0 18px;
+}
+
+.section {
+    background: white;
+    padding: 22px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px #d98da51a;
+}
+
+h2 {
+    color: #bd6f89;
+    margin-top: 0;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.card {
+    padding: 16px;
+    background: #fff0f4;
+    border: 1px solid #f5d5df;
+    border-radius: 10px;
+    overflow-wrap: anywhere;
+}
+
+.card p, .card small {
+    color: #896b77;
+    font-size: 13px;
+}
+
+.card h3 {
+    font-size: 19px;
+    margin-bottom: 0;
+}
+
+.income h3, .green {
+    color: #478568;
+}
+
+.expense h3, .red {
+    color: #cf667d;
+}
+
+.form-grid, .filter {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #edc4d1;
+    border-radius: 7px;
+    background: white;
+    color: #55404a;
+}
+
+input:focus, select:focus {
+    outline: 2px solid #f2bdce;
+}
+
+button {
+    margin-top: 17px;
+    padding: 11px 15px;
+    border: none;
+    border-radius: 7px;
+    background: #d989a4;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #c87591;
+}
+
+button.danger {
+    background: #c87591;
+    margin-top: 0;
+}
+
+button.hapus-item {
+    margin: 0;
+    padding: 7px 10px;
+    background: #fbe0e7;
+    color: #a64e6a;
+}
+
+.description, .note {
+    color: #927986;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.summary div {
+    padding: 15px;
+    background: #fff5f7;
+    border-radius: 8px;
+    overflow-wrap: anywhere;
+}
+
+.summary span, .summary strong {
+    display: block;
+}
+
+.summary span {
+    margin-bottom: 9px;
+    font-size: 13px;
+    color: #927986;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.table-wrap {
+    overflow-x: auto;
+    margin-top: 18px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+th, td {
+    padding: 12px 9px;
+    border-bottom: 1px solid #f5dce4;
+    text-align: left;
+    white-space: nowrap;
+}
+
+th {
+    background: #fff0f4;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 7px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.badge.masuk {
+    background: #e1f3e9;
+    color: #478568;
+}
+
+.badge.keluar {
+    background: #fbe0e7;
+    color: #bd536f;
+}
+
+.empty {
+    text-align: center;
+    padding: 20px;
+    color: #927986;
+}
+
+.message {
+    font-size: 14px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #927986;
+    font-size: 13px;
+}
+
+@media (max-width: 650px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .form-grid, .filter, .summary {
+        grid-template-columns: 1fr;
+    }
+
+    .history-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .section {
+        padding: 17px;
+    }
+}
+
+@media (max-width: 360px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
